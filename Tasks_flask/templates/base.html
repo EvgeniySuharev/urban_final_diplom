@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+      <script>
+          document.cookie = "ex=1;";
+          if (!document.cookie)
+          {
+            alert("Этот сайт требует включенных cookies для корректной работы!");
+          }
+      </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ context.title }}</title>
+      <style>
+          .menu {
+	width: 100%;
+	display: table;
+}
+.menu ul {
+	display: table-row;
+}
+.menu li {
+	display: table-cell;
+	background: #2767A0;
+}
+.menu ul li:hover, .menu a:hover {
+	background: #666;
+}
+.menu li a {
+	display: block;
+	padding: 8px 15px;
+	color: #fff;
+	text-align: center;
+}
+
+.flash {padding: 10px;}
+.flash.success {
+     border: 1px solid #21DB56;
+     background: #AEFFC5;
+}
+.flash.error {
+     border: 1px solid #FF4343;
+     background: #FF9C9C;
+}
+      </style>
+  </head>
+  <body>
+    <h2 align="center">Добро пожаловать! Это Ваш личный список дел.</h2>
+  <div class="menu">
+	<ul>
+		<li><a href="/">Главная</a></li>
+        {% if session['current_user'] %}
+		<li><a href="/all_tasks">Мои задачи</a></li>
+        <li><a href="/logoff">Выйти</a></li>
+        {% else %}
+        <li><a href="/register">Зарегистрироваться</a></li>
+		<li><a href="/login">Войти</a></li>
+        {% endif %}
+	</ul>
+</div>
+    {% for cat, msg in get_flashed_messages(True) %}
+    <div align="center" class="flash {{ cat }}">{{ msg }}</div>
+    {% endfor %}
+{% block content %}
+    {% endblock %}
+  </body>
+</html>

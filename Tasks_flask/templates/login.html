@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div align="center">
+    <h2>Форма авторизации</h2>
+    <form action="/login" method="post">
+        <p>
+            Имя пользователя:<br>
+            <input name="name" type="text" maxlength="20" minlength="4"/>
+        </p>
+        <p>
+            Пароль:<br>
+            <input name="password" type="password" minlength="4" maxlength="20"/>
+        <input type="submit" value="Войти" />
+    </form>
+</div>
+{% endblock %}

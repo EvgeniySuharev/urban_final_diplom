@@ -1,0 +1,10 @@
+{% extends 'tasks/base.html' %}
+{% block content %}
+<div align="center">
+    <form action="{% url 'users:login' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Войти</button>
+    </form>
+</div>
+{% endblock %}

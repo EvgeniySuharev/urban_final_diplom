@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>
+    <form action="/all_tasks" method="post">
+    <input type="text" maxlength="20" name="title" required>
+    <input type="text" name="content">
+    <input type="submit" value="Добавить задачу">
+</form>
+</p>
+<div align="center">
+    {% for task in context.tasks %}
+    {{ task.title }} | {{ task.content }}
+    <form action="/delete_task/{{ task.id }}" method="post">
+        <input type="submit" value="Удалить задачу"></form>
+    {% endfor %}
+</div>
+{% endblock %}

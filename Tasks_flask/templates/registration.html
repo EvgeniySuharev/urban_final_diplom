@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<div align="center">
+    <h2>Форма регистрации</h2>
+    <form action="/register" method="post">
+        <p>
+            Имя пользователя:<br>
+            <input name="name" type="text" maxlength="20" minlength="4"/>
+        </p>
+        <p>
+            Пароль:<br>
+            <input name="password1" type="password" minlength="4" maxlength="20"/>
+        </p>
+        <p>
+            Повторите пароль:<br>
+            <input name="password2" type="password" minlength="4" maxlength="20"/>
+        </p>
+        <input type="submit" value="Зарегистрировать" />
+    </form>
+</div>
+{% endblock %}

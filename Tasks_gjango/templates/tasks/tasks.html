@@ -1,0 +1,20 @@
+{% extends 'tasks/base.html' %}
+{% block content %}
+<p>
+    <form action="/add/" method="post">
+    {% csrf_token %}
+    <input type="text" maxlength="40" name="title">
+    <input type="text" name="description">
+    <input type="submit" value="Добавить задачу">
+</form>
+</p>
+
+<div align="center">
+    {% for task in all_tasks %}
+    {{ task.title }} | {{ task.description }} | {{ task.time_stamp }}
+    <form action="/delete/{{ task.id }}/" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Удалить задачу"></form>
+    {% endfor %}
+</div>
+{% endblock %}

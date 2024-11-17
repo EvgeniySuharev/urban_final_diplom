@@ -1,0 +1,12 @@
+{% extends 'tasks/base.html' %}
+{% block content %}
+<div align="center">
+    <form action="/login" method="post">
+        <p>Имя пользователя:<br>
+            <input name="name" type="text"/></p>
+        <p>Пароль:<br>
+            <input name="psw" type="password"/></p>
+        <p><input type="submit" value="Войти" /></p>
+    </form>
+</div>
+{% endblock %}
